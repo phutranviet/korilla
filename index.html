@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Stay - Thuê Phòng & Penthouse Cao Cấp</title>
+    <style>
+        /* --- CSS SETUP --- */
+        :root {
+            --primary-color: #c09e6c; /* Màu vàng kim sang trọng */
+            --dark-bg: #1a1a1a;
+            --light-text: #f4f4f4;
+            --card-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        
+        body { background-color: #f9f9f9; color: #333; }
+
+        /* --- HEADER & HERO --- */
+        header {
+            background: var(--dark-bg);
+            color: var(--light-text);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary-color); }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        .hero h1 { font-size: 3rem; margin-bottom: 20px; }
+        .hero p { font-size: 1.2rem; margin-bottom: 30px; }
+        .btn-cta {
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .btn-cta:hover { background-color: #a38355; }
+
+        /* --- ROOM GRID --- */
+        .container { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
+        .section-title { text-align: center; margin-bottom: 40px; font-size: 2rem; }
+
+        .room-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .room-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .room-card:hover { transform: translateY(-10px); }
+        
+        .card-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .card-info { padding: 20px; }
+        .card-type { color: var(--primary-color); font-size: 0.9rem; font-weight: bold; text-transform: uppercase; }
+        .card-title { font-size: 1.4rem; margin: 10px 0; }
+        .card-price { font-size: 1.2rem; font-weight: bold; color: #333; }
+        .card-price span { font-size: 0.9rem; font-weight: normal; color: #666; }
+
+        /* --- MODAL (POPUP) --- */
+        .modal {
+            display: none; /* Ẩn mặc định */
+            position: fixed;
+            z-index: 1000;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background-color: white;
+            width: 90%;
+            max-width: 900px;
+            border-radius: 10px;
+            position: relative;
+            animation: fadeIn 0.4s;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            max-height: 90vh;
+        }
+
+        .modal-header { padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;}
+        .close-btn { font-size: 2rem; cursor: pointer; color: #aaa; }
+        .close-btn:hover { color: #000; }
+
+        .modal-body { padding: 20px; overflow-y: auto; }
+        
+        .modal-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .modal-gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .modal-gallery img:first-child { grid-column: span 2; height: 350px; }
+
+        .modal-details h3 { color: var(--primary-color); margin-bottom: 10px; }
+        .modal-details p { line-height: 1.6; margin-bottom: 15px; }
+        .modal-features { list-style: none; display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 20px;}
+        .modal-features li { background: #eee; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; }
+
+        .modal-footer {
+            padding: 20px;
+            border-top: 1px solid #eee;
+            text-align: right;
+        }
+
+        @keyframes fadeIn { from {opacity: 0; transform: scale(0.9);} to {opacity: 1; transform: scale(1);} }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .modal-gallery { grid-template-columns: 1fr; }
+            .modal-gallery img:first-child { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">LUXURY STAY</div>
+        <a href="#contact" class="btn-cta">Liên Hệ Ngay</a>
+    </header>
+
+    <section class="hero">
+        <h1>Không gian sống đẳng cấp</h1>
+        <p>Tìm kiếm căn hộ Studio, 1PN và Penthouse sang trọng nhất thành phố.</p>
+        <a href="#list-rooms" class="btn-cta">Xem Phòng Ngay</a>
+    </section>
+
+    <div class="container" id="list-rooms">
+        <h2 class="section-title">Danh Sách Phòng Nổi Bật</h2>
+        <div class="room-grid" id="roomGrid">
+            </div>
+    </div>
+
+    <footer style="background: #1a1a1a; color: white; text-align: center; padding: 40px;">
+        <p id="contact">Hotline: 0909.xxx.xxx | Email: contact@luxurystay.com</p>
+        <p style="margin-top:10px; font-size: 0.8rem; color: #888;">© 2025 Luxury Stay. All rights reserved.</p>
+    </footer>
+
+    <div id="roomModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Tên Phòng</h2>
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="modal-gallery" id="modalGallery">
+                    </div>
+                <div class="modal-details">
+                    <h3 id="modalPrice">Giá: </h3>
+                    <ul class="modal-features" id="modalFeatures"></ul>
+                    <p id="modalDesc">Mô tả chi tiết...</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn-cta" onclick="alert('Đã gửi yêu cầu tư vấn!')">Đặt lịch xem phòng</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- DỮ LIỆU PHÒNG (JSON MOCK DATA) ---
+        const rooms = [
+            {
+                id: 1,
+                type: 'Penthouse',
+                title: 'Skyline Penthouse View Sông',
+                price: '45.000.000 VND/tháng',
+                desc: 'Căn Penthouse 2 tầng với tầm nhìn toàn cảnh thành phố và sông Sài Gòn. Nội thất nhập khẩu Ý, hồ bơi riêng.',
+                features: ['3 Phòng ngủ', '300m2', 'Hồ bơi riêng', 'Full nội thất'],
+                thumbnail: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=600&auto=format&fit=crop',
+                images: [
+                    'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200&auto=format&fit=crop', // Ảnh lớn
+                    'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=600&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=600&auto=format&fit=crop'
+                ]
+            },
+            {
+                id: 2,
+                type: 'Studio Cao Cấp',
+                title: 'Studio Modern Art - Quận 1',
+                price: '12.000.000 VND/tháng',
+                desc: 'Căn hộ Studio thiết kế theo phong cách tối giản. Đầy đủ tiện nghi bếp, máy giặt sấy. An ninh 24/7.',
+                features: ['1 Phòng ngủ', '45m2', 'Ban công', 'Dọn phòng 2 lần/tuần'],
+                thumbnail: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=600&auto=format&fit=crop',
+                images: [
+                    'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1200&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=600&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=600&auto=format&fit=crop'
+                ]
+            },
+            {
+                id: 3,
+                type: 'Căn hộ 2PN',
+                title: 'Green Life Apartment - Quận 2',
+                price: '20.000.000 VND/tháng',
+                desc: 'Không gian xanh mát, yên tĩnh. Phù hợp cho gia đình nhỏ. Gần trường quốc tế và siêu thị.',
+                features: ['2 Phòng ngủ', '80m2', 'Gym & BBQ', 'Pet friendly'],
+                thumbnail: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=600&auto=format&fit=crop',
+                images: [
+                    'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1200&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?q=80&w=600&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1484154218962-a1c002085d2f?q=80&w=600&auto=format&fit=crop'
+                ]
+            }
+        ];
+
+        // --- RENDER DANH SÁCH PHÒNG ---
+        const grid = document.getElementById('roomGrid');
+        
+        rooms.forEach(room => {
+            const card = document.createElement('div');
+            card.className = 'room-card';
+            card.onclick = () => openModal(room.id); // Gắn sự kiện click
+            
+            card.innerHTML = `
+                <img src="${room.thumbnail}" alt="${room.title}" class="card-img">
+                <div class="card-info">
+                    <div class="card-type">${room.type}</div>
+                    <h3 class="card-title">${room.title}</h3>
+                    <div class="card-price">${room.price}</div>
+                    <button style="margin-top:15px; width:100%; padding:10px; border:1px solid #333; background:transparent; cursor:pointer;">Xem chi tiết</button>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        // --- XỬ LÝ MODAL ---
+        const modal = document.getElementById('roomModal');
+
+        function openModal(id) {
+            const room = rooms.find(r => r.id === id);
+            if (!room) return;
+
+            // Fill dữ liệu vào modal
+            document.getElementById('modalTitle').innerText = room.title;
+            document.getElementById('modalPrice').innerText = `Giá thuê: ${room.price}`;
+            document.getElementById('modalDesc').innerText = room.desc;
+
+            // Render tiện ích (Features)
+            const featuresHtml = room.features.map(f => `<li>${f}</li>`).join('');
+            document.getElementById('modalFeatures').innerHTML = featuresHtml;
+
+            // Render Gallery ảnh
+            const galleryHtml = room.images.map(img => `<img src="${img}" alt="Room Detail">`).join('');
+            document.getElementById('modalGallery').innerHTML = galleryHtml;
+
+            // Hiện modal
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Chặn cuộn trang chính
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Cho phép cuộn lại
+        }
+
+        // Đóng modal khi click ra ngoài vùng content
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
