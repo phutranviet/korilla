@@ -1,21 +1,99 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxury Stay - Thuê Phòng & Penthouse Cao Cấp</title>
+    <title>Korallia Apt - Thuê Phòng & Penthouse Cao Cấp</title>
+    <link rel="icon" type="image/x-icon" href="./images/favicon.png">
     <style>
-        /* --- CSS SETUP --- */
-        :root {
-            --primary-color: #c09e6c; /* Màu vàng kim sang trọng */
-            --dark-bg: #1a1a1a;
-            --light-text: #f4f4f4;
-            --card-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        /* --- CSS CHO FOOTER & SOCIAL ICONS --- */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        
-        body { background-color: #f9f9f9; color: #333; }
+        .social-list {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            /* Nền mờ */
+            border-radius: 50%;
+            /* Bo tròn */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Hiệu ứng hover từng màu */
+        .social-link:hover {
+            transform: translateY(-3px);
+        }
+
+        .social-link.fb:hover {
+            background: #1877F2;
+            border-color: #1877F2;
+        }
+
+        .social-link.tt:hover {
+            background: #000;
+            border-color: #00f2ea;
+        }
+
+        /* Tiktok màu đen viền xanh */
+        .social-link.yt:hover {
+            background: #FF0000;
+            border-color: #FF0000;
+        }
+
+        .social-link.insta:hover {
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+            border-color: #d6249f;
+        }
+
+        .social-link.zalo:hover {
+            background: #0068FF;
+            border-color: #0068FF;
+        }
+
+        /* --- CSS SETUP --- */
+        :root {
+            --primary-color: #c09e6c;
+            /* Màu vàng kim sang trọng */
+            --dark-bg: #1a1a1a;
+            --light-text: #f4f4f4;
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+        }
 
         /* --- HEADER & HERO --- */
         header {
@@ -26,10 +104,15 @@
             justify-content: space-between;
             align-items: center;
         }
-        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary-color); }
-        
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1920&auto=format&fit=crop');
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./images/banner.jpg');
             background-size: cover;
             background-position: center;
             height: 60vh;
@@ -40,8 +123,17 @@
             text-align: center;
             color: white;
         }
-        .hero h1 { font-size: 3rem; margin-bottom: 20px; }
-        .hero p { font-size: 1.2rem; margin-bottom: 30px; }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
         .btn-cta {
             padding: 12px 30px;
             background-color: var(--primary-color);
@@ -51,11 +143,23 @@
             border-radius: 5px;
             transition: 0.3s;
         }
-        .btn-cta:hover { background-color: #a38355; }
+
+        .btn-cta:hover {
+            background-color: #a38355;
+        }
 
         /* --- ROOM GRID --- */
-        .container { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
-        .section-title { text-align: center; margin-bottom: 40px; font-size: 2rem; }
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+        }
 
         .room-grid {
             display: grid;
@@ -71,33 +175,61 @@
             transition: transform 0.3s ease;
             cursor: pointer;
         }
-        .room-card:hover { transform: translateY(-10px); }
-        
+
+        .room-card:hover {
+            transform: translateY(-10px);
+        }
+
         .card-img {
             width: 100%;
             height: 250px;
             object-fit: cover;
         }
-        
-        .card-info { padding: 20px; }
-        .card-type { color: var(--primary-color); font-size: 0.9rem; font-weight: bold; text-transform: uppercase; }
-        .card-title { font-size: 1.4rem; margin: 10px 0; }
-        .card-price { font-size: 1.2rem; font-weight: bold; color: #333; }
-        .card-price span { font-size: 0.9rem; font-weight: normal; color: #666; }
+
+        .card-info {
+            padding: 20px;
+        }
+
+        .card-type {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            margin: 10px 0;
+        }
+
+        .card-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .card-price span {
+            font-size: 0.9rem;
+            font-weight: normal;
+            color: #666;
+        }
 
         /* --- MODAL (POPUP) --- */
         .modal {
-            display: none; /* Ẩn mặc định */
+            display: none;
+            /* Ẩn mặc định */
             position: fixed;
             z-index: 1000;
-            left: 0; top: 0;
-            width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.8);
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
             justify-content: center;
             align-items: center;
             overflow-y: auto;
         }
-        
+
         .modal-content {
             background-color: white;
             width: 90%;
@@ -111,30 +243,72 @@
             max-height: 90vh;
         }
 
-        .modal-header { padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;}
-        .close-btn { font-size: 2rem; cursor: pointer; color: #aaa; }
-        .close-btn:hover { color: #000; }
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-        .modal-body { padding: 20px; overflow-y: auto; }
-        
+        .close-btn {
+            font-size: 2rem;
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        .close-btn:hover {
+            color: #000;
+        }
+
+        .modal-body {
+            padding: 20px;
+            overflow-y: auto;
+        }
+
         .modal-gallery {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 10px;
             margin-bottom: 20px;
         }
+
         .modal-gallery img {
             width: 100%;
             height: 200px;
             object-fit: cover;
             border-radius: 5px;
         }
-        .modal-gallery img:first-child { grid-column: span 2; height: 350px; }
 
-        .modal-details h3 { color: var(--primary-color); margin-bottom: 10px; }
-        .modal-details p { line-height: 1.6; margin-bottom: 15px; }
-        .modal-features { list-style: none; display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 20px;}
-        .modal-features li { background: #eee; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; }
+        .modal-gallery img:first-child {
+            grid-column: span 2;
+            height: 350px;
+        }
+
+        .modal-details h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .modal-details p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .modal-features {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .modal-features li {
+            background: #eee;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
 
         .modal-footer {
             padding: 20px;
@@ -142,38 +316,93 @@
             text-align: right;
         }
 
-        @keyframes fadeIn { from {opacity: 0; transform: scale(0.9);} to {opacity: 1; transform: scale(1);} }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .modal-gallery { grid-template-columns: 1fr; }
-            .modal-gallery img:first-child { height: 250px; }
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .modal-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-gallery img:first-child {
+                height: 250px;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <header>
-        <div class="logo">LUXURY STAY</div>
+        <div class="logo">Korallia</div>
         <a href="#contact" class="btn-cta">Liên Hệ Ngay</a>
     </header>
 
     <section class="hero">
         <h1>Không gian sống đẳng cấp</h1>
-        <p>Tìm kiếm căn hộ Studio, 1PN và Penthouse sang trọng nhất thành phố.</p>
+        <p>Tìm kiếm căn hộ Studio và Penthouse sang trọng nhất thành phố Đà Nẵng</p>
         <a href="#list-rooms" class="btn-cta">Xem Phòng Ngay</a>
     </section>
 
     <div class="container" id="list-rooms">
         <h2 class="section-title">Danh Sách Phòng Nổi Bật</h2>
         <div class="room-grid" id="roomGrid">
-            </div>
+        </div>
     </div>
 
-    <footer style="background: #1a1a1a; color: white; text-align: center; padding: 40px;">
-        <p id="contact">Hotline: 0909.xxx.xxx | Email: contact@luxurystay.com</p>
-        <p style="margin-top:10px; font-size: 0.8rem; color: #888;">© 2025 Luxury Stay. All rights reserved.</p>
+    <footer>
+        <div style="margin-bottom: 10px;">
+            <h3 style="color: var(--primary-color); margin-bottom: 10px;">Korallia appartment</h3>
+            <p style="margin-bottom: 5px;">Hotline: 0905396699</p>
+            <p>Email: trinhtran0311@gmail.com</p>
+            <p>Address: 107 Doãn Khuê</p>
+
+        </div>
+
+        <div class="social-list">
+
+            <a href="https://www.instagram.com/cyriltran/" class="social-link insta" target="_blank">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.tiktok.com/@thuctrinh311?lang=en-GB" class="social-link tt" target="_blank">
+                <i class="fa-brands fa-tiktok"></i>
+            </a>
+            <a href="https://www.facebook.com/thuc.trinh.705568" class="social-link fb" target="_blank">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="https://www.youtube.com/" class="social-link yt" target="_blank">
+                <i class="fa-brands fa-youtube"></i>
+            </a>
+            <a href="https://zalo.me/0905396699" class="social-link zalo" target="_blank">
+                <svg width="20" height="20" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M18.3333 21.6667H81.6667C86.269 21.6667 90 25.3976 90 30V70C90 74.6024 86.269 78.3333 81.6667 78.3333H56.6667L45 90V78.3333H18.3333C13.731 78.3333 10 74.6024 10 70V30C10 25.3976 13.731 21.6667 18.3333 21.6667Z"
+                        stroke="white" stroke-width="8" />
+                    <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" fill="white"
+                        font-family="Arial, sans-serif" font-weight="bold" font-size="35">Zalo</text>
+                </svg>
+            </a>
+           
+        </div>
+
+        <p
+            style="margin-top:20px; font-size: 0.8rem; color: #888; border-top: 1px solid #333; padding-top: 20px; width: 100%; max-width: 1200px;">
+            © 2025 Korallia appartment. All rights reserved.
+        </p>
     </footer>
 
     <div id="roomModal" class="modal">
@@ -184,7 +413,7 @@
             </div>
             <div class="modal-body">
                 <div class="modal-gallery" id="modalGallery">
-                    </div>
+                </div>
                 <div class="modal-details">
                     <h3 id="modalPrice">Giá: </h3>
                     <ul class="modal-features" id="modalFeatures"></ul>
@@ -203,10 +432,10 @@
             {
                 id: 1,
                 type: 'Penthouse',
-                title: 'Skyline Penthouse View Sông',
-                price: '45.000.000 VND/tháng',
+                title: 'Skyline Penthouse',
+                price: '23.000.000 VND/tháng',
                 desc: 'Căn Penthouse 2 tầng với tầm nhìn toàn cảnh thành phố và sông Sài Gòn. Nội thất nhập khẩu Ý, hồ bơi riêng.',
-                features: ['3 Phòng ngủ', '300m2', 'Hồ bơi riêng', 'Full nội thất'],
+                features: ['3 Phòng ngủ', '84m2', 'Hồ bơi riêng', 'Full nội thất'],
                 thumbnail: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=600&auto=format&fit=crop',
                 images: [
                     'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200&auto=format&fit=crop', // Ảnh lớn
@@ -217,22 +446,22 @@
             {
                 id: 2,
                 type: 'Studio Cao Cấp',
-                title: 'Studio Modern Art - Quận 1',
-                price: '12.000.000 VND/tháng',
+                title: 'Studio Modern Art',
+                price: '15.000.000 VND/tháng',
                 desc: 'Căn hộ Studio thiết kế theo phong cách tối giản. Đầy đủ tiện nghi bếp, máy giặt sấy. An ninh 24/7.',
-                features: ['1 Phòng ngủ', '45m2', 'Ban công', 'Dọn phòng 2 lần/tuần'],
-                thumbnail: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=600&auto=format&fit=crop',
+                features: ['1 Phòng ngủ', '38m2', 'Ban công', 'Dọn phòng 2 lần/tuần'],
+                thumbnail: './images/1PN.jpg',
                 images: [
-                    'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=1200&auto=format&fit=crop',
-                    'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=600&auto=format&fit=crop',
-                    'https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=600&auto=format&fit=crop'
+                    './images/1PNLVR.jpg',
+                    './images/1PNBR.jpg',
+                    './images/1PNBalcony.jpg',
                 ]
             },
             {
                 id: 3,
                 type: 'Căn hộ 2PN',
-                title: 'Green Life Apartment - Quận 2',
-                price: '20.000.000 VND/tháng',
+                title: 'Green Life Apartment',
+                price: '17.000.000 VND/tháng',
                 desc: 'Không gian xanh mát, yên tĩnh. Phù hợp cho gia đình nhỏ. Gần trường quốc tế và siêu thị.',
                 features: ['2 Phòng ngủ', '80m2', 'Gym & BBQ', 'Pet friendly'],
                 thumbnail: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=600&auto=format&fit=crop',
@@ -246,12 +475,12 @@
 
         // --- RENDER DANH SÁCH PHÒNG ---
         const grid = document.getElementById('roomGrid');
-        
+
         rooms.forEach(room => {
             const card = document.createElement('div');
             card.className = 'room-card';
             card.onclick = () => openModal(room.id); // Gắn sự kiện click
-            
+
             card.innerHTML = `
                 <img src="${room.thumbnail}" alt="${room.title}" class="card-img">
                 <div class="card-info">
@@ -295,11 +524,12 @@
         }
 
         // Đóng modal khi click ra ngoài vùng content
-        window.onclick = function(event) {
+        window.onclick = function (event) {
             if (event.target == modal) {
                 closeModal();
             }
         }
     </script>
 </body>
+
 </html>
