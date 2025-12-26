@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Korallia Apt - Thuê Phòng & Penthouse Cao Cấp</title>
-    <link rel="icon" type="image/x-icon" href="./images/favicon.png">
+    <link rel="icon" type="image/x-icon" href="./images/korallia-apartment-danang-favicon.png">
     <style>
         html {
             scroll-behavior: smooth;
@@ -116,7 +116,7 @@
         }
 
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./images/banner.jpg');
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./images/korallia-apartment-danang-banner.jpg');
             background-size: cover;
             background-position: center;
             height: 60vh;
@@ -469,11 +469,11 @@
                 price: 'Liên Hệ',
                 desc: 'Căn Penthouse với tầm nhìn toàn cảnh thành phố Đà Nẵng.',
                 features: ['2 Phòng ngủ', '84m2', 'Ban công', 'BBQ', 'Full nội thất'],
-                thumbnail: './images/penh.jpg',
+                thumbnail: './images/korallia-apartment-danang-penh.jpg',
                 images: [
-                    './images/penhBR.jpg',
-                    './images/penhBathR.jpg',
-                    './images/penhLVR.jpg',
+                    './images/korallia-apartment-danang-penhBR.jpg',
+                    './images/korallia-apartment-danang-penhBathR.jpg',
+                    './images/korallia-apartment-danang-penhLVR.jpg',
                 ]
             },
             {
@@ -483,11 +483,11 @@
                 price: 'Liên Hệ',
                 desc: 'Căn hộ Studio thiết kế theo phong cách tối giản. Đầy đủ tiện nghi bếp, máy giặt sấy. An ninh 24/7.',
                 features: ['1 Phòng ngủ', '28m2', 'Ban công', 'BBQ', 'Full nội thất'],
-                thumbnail: './images/1PN.jpg',
+                thumbnail: './images/korallia-apartment-danang-1PN.jpg',
                 images: [
-                    './images/1PNLiv.jpg',
-                    './images/1PNBR.jpg',
-                    './images/1PNBalcony.jpg',
+                    './images/korallia-apartment-danang-1PNLiv.jpg',
+                    './images/korallia-apartment-danang-1PNBR.jpg',
+                    './images/korallia-apartment-danang-1PNBalcony.jpg',
                 ]
             },
             {
@@ -497,11 +497,11 @@
                 price: 'Liên Hệ',
                 desc: 'Không gian xanh mát, yên tĩnh. Phù hợp cho mọi gia đình. Trung tâm thành phố gần trường và siêu thị.',
                 features: ['2 Phòng ngủ', '38m2', 'Ban công', 'BBQ', 'Full nội thất'],
-                thumbnail: './images/2PN1.jpg',
+                thumbnail: './images/korallia-apartment-danang-2PN1.jpg',
                 images: [
-                    './images/1PNLVR.jpg',
-                    './images/2PN.jpg',
-                    './images/2PNBal.jpg',
+                    './images/korallia-apartment-danang-1PNLVR.jpg',
+                    './images/korallia-apartment-danang-2PN.jpg',
+                    './images/korallia-apartment-danang-2PNBal.jpg',
                 ]
             }
         ];
@@ -515,7 +515,7 @@
             card.onclick = () => openModal(room.id); // Gắn sự kiện click
 
             card.innerHTML = `
-                <img src="${room.thumbnail}" alt="${room.title}" class="card-img">
+                <img src="${room.thumbnail}" alt="korallia apartment da nang" class="card-img">
                 <div class="card-info">
                     <div class="card-type">${room.type}</div>
                     <h3 class="card-title">${room.title}</h3>
@@ -542,7 +542,7 @@
             document.getElementById('modalFeatures').innerHTML = featuresHtml;
 
             // Render Gallery ảnh
-            const galleryHtml = room.images.map(img => `<img src="${img}" alt="Room Detail">`).join('');
+            const galleryHtml = room.images.map(img => `<img src="${img}" alt="korallia apartment da nang">`).join('');
             document.getElementById('modalGallery').innerHTML = galleryHtml;
 
             // Hiện modal
