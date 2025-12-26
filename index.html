@@ -431,8 +431,30 @@
                     <p id="modalDesc">Mô tả chi tiết...</p>
                 </div>
             </div>
-            <div class="modal-footer">
-                <a href="#" class="btn-cta" onclick="alert('Đã gửi yêu cầu tư vấn!')">Đặt lịch xem phòng</a>
+            <div class="booking-form-container" style="padding: 20px; border-top: 1px solid #eee;">
+                <h4 style="margin-bottom: 15px; color: var(--primary-color);">Đăng ký xem phòng này</h4>
+
+                <form action="https://formspree.io/f/meeqqqoq" method="POST">
+
+                    <input type="hidden" name="Ten_Phong" id="hiddenRoomTitle">
+
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <input type="text" name="Ten_Khach" placeholder="Tên của bạn" required
+                            style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+
+                        <input type="tel" name="So_Dien_Thoai" placeholder="Số điện thoại" required
+                            style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    </div>
+
+                    <button type="submit" class="btn-cta"
+                        style="width: 100%; margin-top: 15px; border: none; cursor: pointer;">
+                        Gửi Yêu Cầu
+                    </button>
+                </form>
+
+                <p style="text-align: center; margin-top: 10px; font-size: 0.9rem; color: #666;">
+                    Hoặc gọi ngay: <a href="tel:0905396699" style="color: #333; font-weight: bold;">0905396699</a>
+                    </button>
             </div>
         </div>
     </div>
@@ -509,7 +531,7 @@
         function openModal(id) {
             const room = rooms.find(r => r.id === id);
             if (!room) return;
-
+            document.getElementById('hiddenRoomTitle').value = room.title;
             // Fill dữ liệu vào modal
             document.getElementById('modalTitle').innerText = room.title;
             document.getElementById('modalPrice').innerText = `Giá thuê: ${room.price}`;
