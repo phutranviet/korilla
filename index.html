@@ -8,6 +8,10 @@
     <title>Korallia Apt - Thuê Phòng & Penthouse Cao Cấp</title>
     <link rel="icon" type="image/x-icon" href="./images/favicon.png">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         /* --- CSS CHO FOOTER & SOCIAL ICONS --- */
         footer {
             background: #1a1a1a;
@@ -99,7 +103,7 @@
         header {
             background: var(--dark-bg);
             color: var(--light-text);
-            padding: 20px 50px;
+            padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -158,7 +162,7 @@
         .section-title {
             text-align: center;
             margin-bottom: 40px;
-            font-size: 2rem;
+            font-size: 1.5rem;
         }
 
         .room-grid {
@@ -243,6 +247,8 @@
             max-height: 90vh;
         }
 
+
+
         .modal-header {
             padding: 20px;
             border-bottom: 1px solid #eee;
@@ -259,6 +265,10 @@
 
         .close-btn:hover {
             color: #000;
+        }
+
+        .modal-body::-webkit-scrollbar {
+            display: none;
         }
 
         .modal-body {
@@ -311,9 +321,9 @@
         }
 
         .modal-footer {
-            padding: 20px;
+            padding: 30px;
             border-top: 1px solid #eee;
-            text-align: right;
+            text-align: center;
         }
 
         @keyframes fadeIn {
@@ -331,11 +341,12 @@
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
 
             .modal-gallery {
-                grid-template-columns: 1fr;
+                display: flex;
+                flex-direction: column;
             }
 
             .modal-gallery img:first-child {
@@ -367,9 +378,9 @@
     <footer>
         <div style="margin-bottom: 10px;">
             <h3 style="color: var(--primary-color); margin-bottom: 10px;">Korallia appartment</h3>
-            <p style="margin-bottom: 5px;">Hotline: 0905396699</p>
+            <p id="contact" style="margin-bottom: 5px;">Hotline: 0905396699</p>
             <p>Email: trinhtran0311@gmail.com</p>
-            <p>Address: 107 Doãn Khuê</p>
+            <p>Address: 107 Doãn Khuê, P Hoà Cường, Đà Nẵng, Việt Nam</p>
 
         </div>
 
@@ -396,7 +407,7 @@
                         font-family="Arial, sans-serif" font-weight="bold" font-size="35">Zalo</text>
                 </svg>
             </a>
-           
+
         </div>
 
         <p
@@ -432,27 +443,27 @@
             {
                 id: 1,
                 type: 'Penthouse',
-                title: 'Skyline Penthouse',
-                price: '23.000.000 VND/tháng',
-                desc: 'Căn Penthouse 2 tầng với tầm nhìn toàn cảnh thành phố và sông Sài Gòn. Nội thất nhập khẩu Ý, hồ bơi riêng.',
-                features: ['3 Phòng ngủ', '84m2', 'Hồ bơi riêng', 'Full nội thất'],
-                thumbnail: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=600&auto=format&fit=crop',
+                title: 'Korallia Penthouse',
+                price: 'Liên Hệ',
+                desc: 'Căn Penthouse với tầm nhìn toàn cảnh thành phố Đà Nẵng.',
+                features: ['2 Phòng ngủ', '84m2', 'Ban công', 'BBQ', 'Full nội thất'],
+                thumbnail: './images/penh.jpg',
                 images: [
-                    'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200&auto=format&fit=crop', // Ảnh lớn
-                    'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=600&auto=format&fit=crop',
-                    'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=600&auto=format&fit=crop'
+                    './images/penhBR.jpg',
+                    './images/penhBathR.jpg',
+                    './images/penhLVR.jpg',
                 ]
             },
             {
                 id: 2,
                 type: 'Studio Cao Cấp',
                 title: 'Studio Modern Art',
-                price: '15.000.000 VND/tháng',
+                price: 'Liên Hệ',
                 desc: 'Căn hộ Studio thiết kế theo phong cách tối giản. Đầy đủ tiện nghi bếp, máy giặt sấy. An ninh 24/7.',
-                features: ['1 Phòng ngủ', '38m2', 'Ban công', 'Dọn phòng 2 lần/tuần'],
+                features: ['1 Phòng ngủ', '28m2', 'Ban công', 'BBQ', 'Full nội thất'],
                 thumbnail: './images/1PN.jpg',
                 images: [
-                    './images/1PNLVR.jpg',
+                    './images/1PNLiv.jpg',
                     './images/1PNBR.jpg',
                     './images/1PNBalcony.jpg',
                 ]
@@ -461,14 +472,14 @@
                 id: 3,
                 type: 'Căn hộ 2PN',
                 title: 'Green Life Apartment',
-                price: '17.000.000 VND/tháng',
-                desc: 'Không gian xanh mát, yên tĩnh. Phù hợp cho gia đình nhỏ. Gần trường quốc tế và siêu thị.',
-                features: ['2 Phòng ngủ', '80m2', 'Gym & BBQ', 'Pet friendly'],
-                thumbnail: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=600&auto=format&fit=crop',
+                price: 'Liên Hệ',
+                desc: 'Không gian xanh mát, yên tĩnh. Phù hợp cho mọi gia đình. Trung tâm thành phố gần trường và siêu thị.',
+                features: ['2 Phòng ngủ', '38m2', 'Ban công', 'BBQ', 'Full nội thất'],
+                thumbnail: './images/2PN1.jpg',
                 images: [
-                    'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1200&auto=format&fit=crop',
-                    'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?q=80&w=600&auto=format&fit=crop',
-                    'https://images.unsplash.com/photo-1484154218962-a1c002085d2f?q=80&w=600&auto=format&fit=crop'
+                    './images/1PNLVR.jpg',
+                    './images/2PN.jpg',
+                    './images/2PNBal.jpg',
                 ]
             }
         ];
@@ -486,7 +497,6 @@
                 <div class="card-info">
                     <div class="card-type">${room.type}</div>
                     <h3 class="card-title">${room.title}</h3>
-                    <div class="card-price">${room.price}</div>
                     <button style="margin-top:15px; width:100%; padding:10px; border:1px solid #333; background:transparent; cursor:pointer;">Xem chi tiết</button>
                 </div>
             `;
