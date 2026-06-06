@@ -138,6 +138,18 @@
             margin-bottom: 30px;
         }
 
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .btn-common {
+            min-width: 210px;
+        }
+
         .btn-cta {
             padding: 12px 30px;
             background-color: var(--primary-color);
@@ -366,7 +378,17 @@
     <section class="hero">
         <h1>Không gian sống đẳng cấp</h1>
         <p>Tìm kiếm căn hộ Studio và Penthouse sang trọng nhất thành phố Đà Nẵng</p>
-        <a href="#list-rooms" class="btn-cta">Xem Phòng Ngay</a>
+
+        <div class="hero-buttons">
+            <a href="#list-rooms" class="btn-cta btn-common">
+                Xem Phòng Ngay
+            </a>
+
+            <a href="https://www.google.com/search?q=korallia+apartment&oq=ko&gs_lcrp=EgZjaHJvbWUqCAgEEEUYJxg7MgYIABBFGDwyCAgBEEUYJxg7MgYIAhBFGDkyBggDEEUYOzIICAQQRRgnGDsyBggFEEUYOzIQCAYQLhjHARixAxjRAxiABDIGCAcQRRg80gEIMzMyN2owajmoAgawAgHxBR2-njHPlaeC&sourceid=chrome&ie=UTF-8#mpd=~6928064189484462424/promote/photos/mediatool"
+                target="_blank" class="btn-cta btn-common btn-gallery">
+                Xem thêm hình ảnh
+            </a>
+        </div>
     </section>
 
     <div class="container" id="list-rooms">
@@ -381,7 +403,8 @@
             <p id="contact" style="margin-bottom: 5px;">Hotline: 0905396699</p>
             <p>Email: trinhtran0311@gmail.com</p>
             <p>Address: 107 Doãn Khuê, P Hoà Cường, Đà Nẵng,
-            <br/>Việt Nam</p>
+                <br />Việt Nam
+            </p>
 
         </div>
 
